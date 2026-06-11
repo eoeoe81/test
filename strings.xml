@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Aplikasi24SI1</string>
+    <string name="dialogname">BanguRuang</string>
+    <string-array name="planet">
+        <item>Merkurius</item>
+        <item>Venus</item>
+        <item>Bumi</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturnus</item>
+        <item>Uranus</item>
+        <item>Neptunus</item>
+    </string-array>
+</resources>

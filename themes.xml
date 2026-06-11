@@ -1,0 +1,13 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.Aplikasi24SI1" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/teal</item>
+        <item name="colorPrimaryDark">@color/darkteal</item>
+        <item name="colorAccent">@color/darkteal</item>
+        <item name="backgroundColor">@color/sand</item>
+        <item name="android:windowBackground">@color/sand</item>
+    </style>
+
+    <style name="Theme.Aplikasi24SI1" parent="Base.Theme.Aplikasi24SI1" />
+</resources>
