@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFF0E4">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <ImageView
+            android:id="@+id/imgBanner"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/pet_banner"
+            android:contentDescription="Banner Hewan" />
+
+        <EditText
+            android:id="@+id/edtNamaHewan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama Hewan (Wajib)"
+            android:inputType="text"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/edtJenisHewan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Jenis Hewan (Contoh: Kucing/Anjing) (Wajib)"
+            android:inputType="text"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/edtRasHewan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ras Hewan (Opsional)"
+            android:inputType="text"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/edtUmur"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Umur (Bulan) (Wajib)"
+            android:inputType="number"
+            android:layout_marginBottom="12dp" />
+
+        <EditText
+            android:id="@+id/edtBerat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Berat (Kg) (Opsional)"
+            android:inputType="numberDecimal"
+            android:layout_marginBottom="12dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Jenis Kelamin (Wajib)"
+            android:textSize="14sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="4dp" />
+
+        <RadioGroup
+            android:id="@+id/rgJenisKelamin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <RadioButton
+                android:id="@+id/rbJantan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jantan"
+                android:layout_marginRight="16dp" />
+
+            <RadioButton
+                android:id="@+id/rbBetina"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Betina" />
+        </RadioGroup>
+
+        <EditText
+            android:id="@+id/edtCatatan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Catatan Medis / Vaksin"
+            android:inputType="textMultiLine"
+            android:lines="3"
+            android:layout_marginBottom="20dp" />
+
+        <Button
+            android:id="@+id/btnSimpan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="SIMPAN"
+            android:backgroundTint="#007979"
+            android:layout_marginBottom="8dp" />
+
+        <Button
+            android:id="@+id/btnBersihkan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="BERSIHKAN"
+            android:backgroundTint="#24B1B1"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:id="@+id/txvHasilTampil"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textColor="#000000"
+            android:text="" />
+
+    </LinearLayout>
+</ScrollView>
