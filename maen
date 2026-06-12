@@ -1,0 +1,113 @@
+package edu.uph.m24si1.myapplication;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class FormPetActivity extends AppCompatActivity {
+    // Deklarasi variabel komponen formulir
+    private EditText edtNamaHewan, edtJenisHewan, edtRasHewan, edtUmur, edtBerat, edtCatatan;
+    private RadioGroup rgJenisKelamin;
+    private RadioButton rbTerpilih;
+    private Button btnSimpan, btnBersihkan;
+    private TextView txvHasilTampil; 
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        // Menghubungkan file Java dengan layout XML formulir
+        setContentView(R.layout.activity_form_pet); 
+
+        // Inisialisasi seluruh komponen UI dari XML
+        edtNamaHewan = findViewById(R.id.edtNamaHewan);
+        edtJenisHewan = findViewById(R.id.edtJenisHewan);
+        edtRasHewan = findViewById(R.id.edtRasHewan);
+        edtUmur = findViewById(R.id.edtUmur);
+        edtBerat = findViewById(R.id.edtBerat);
+        edtCatatan = findViewById(R.id.edtCatatan);
+        rgJenisKelamin = findViewById(R.id.rgJenisKelamin);
+        btnSimpan = findViewById(R.id.btnSimpan);
+        btnBersihkan = findViewById(R.id.btnBersihkan);
+        txvHasilTampil = findViewById(R.id.txvHasilTampil);
+
+        // Logika aksi klik tombol Simpan
+        btnSimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Ekstraksi nilai teks dari elemen input
+                String nama = edtNamaHewan.getText().toString().trim();
+                String jenis = edtJenisHewan.getText().toString().trim();
+                String ras = edtRasHewan.getText().toString().trim();
+                String umurStr = edtUmur.getText().toString().trim();
+                String beratStr = edtBerat.getText().toString().trim();
+                String catatan = edtCatatan.getText().toString().trim();
+
+                // Mendapatkan ID RadioButton yang aktif/dibuat centang oleh pengguna
+                int selectedId = rgJenisKelamin.getCheckedRadioButtonId();
+                String jenisKelamin = "";
+
+                // Validasi keharusan pengisian data kritikal (Nama, Jenis, Umur, dan Gender)
+                if (nama.isEmpty() || jenis.isEmpty() || umurStr.isEmpty() || selectedId == -1) {
+                    Toast.makeText(FormPetActivity.this, "Harap isi semua data yang wajib!", Toast.LENGTH_SHORT).show();
+                    return; // Menghentikan eksekusi kode di bawahnya jika tidak valid
+                }
+
+                // Mengambil label teks dari RadioButton yang dipilih
+                rbTerpilih = findViewById(selectedId);
+                jenisKelamin = rbTerpilih.getText().toString();
+
+                // Konversi tipe data string ke numerik (untuk kalkulasi database atau logika bisnis)
+                int umur = Integer.parseInt(umurStr);
+                double berat = beratStr.isEmpty() ? 0.0 : Double.parseDouble(beratStr);
+
+                // Konstruksi output data ringkasan
+                String hasilSummary = "Nama: " + nama + "\n" +
+                                      "Jenis: " + jenis + "\n" +
+                                      "Ras: " + (ras.isEmpty() ? "-" : ras) + "\n" +
+                                      "Umur: " + umur + " Bulan\n" +
+                                      "Berat: " + berat + " Kg\n" +
+                                      "Gender: " + jenisKelamin + "\n" +
+                                      "Catatan: " + (catatan.isEmpty() ? "-" : catatan);
+
+                Toast.makeText(FormPetActivity.this, "Data " + nama + " Berhasil Disimpan", Toast.LENGTH_SHORT).show();
+                
+                // Menampilkan hasil teks ke komponen TextView jika tersedia di layout
+                if (txvHasilTampil != null) {
+                    txvHasilTampil.setText(hasilSummary);
+                }
+            }
+        });
+
+        // Logika aksi klik tombol Bersihkan (Reset Form)
+        btnBersihkan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Menyetel ulang seluruh field teks menjadi kosong
+                edtNamaHewan.setText("");
+                edtJenisHewan.setText("");
+                edtRasHewan.setText("");
+                edtUmur.setText("");
+                edtBerat.setText("");
+                edtCatatan.setText("");
+
+                // Menghapus pilihan seleksi pada kelompok Radio Button
+                rgJenisKelamin.clearCheck();
+
+                // Menghapus teks ringkasan jika ada
+                if (txvHasilTampil != null) {
+                    txvHasilTampil.setText("");
+                }
+
+                // Mengembalikan kursor fokus ke inputan urutan pertama
+                edtNamaHewan.requestFocus();
+                Toast.makeText(FormPetActivity.this, "Formulir dikosongkan", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
