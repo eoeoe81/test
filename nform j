@@ -1,0 +1,57 @@
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class FormPetActivity extends AppCompatActivity {
+    EditText edtNamaHewan, edtJenisHewan, edtRas, edtUmur, edtCatatan;
+    RadioGroup rgGender;
+    Button btnSimpan, btnBersih;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_form_pet);
+
+        edtNamaHewan = findViewById(R.id.edtNamaHewan);
+        edtJenisHewan = findViewById(R.id.edtJenisHewan);
+        edtRas = findViewById(R.id.edtRas);
+        edtUmur = findViewById(R.id.edtUmur);
+        edtCatatan = findViewById(R.id.edtCatatan);
+        rgGender = findViewById(R.id.rgGender);
+        btnSimpan = findViewById(R.id.btnSimpan);
+        btnBersih = findViewById(R.id.btnBersih);
+
+        btnSimpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Konversi teks biasa
+                String nama = edtNamaHewan.getText().toString();
+                String umurStr = edtUmur.getText().toString();
+
+                if(nama.isEmpty() || umurStr.isEmpty()) {
+                    Toast.makeText(FormPetActivity.this, "Nama dan Umur wajib diisi!", Toast.LENGTH_SHORT).show();
+                } else {
+                    int umur = Integer.parseInt(umurStr); // Konversi string ke int
+                    Toast.makeText(FormPetActivity.this, "Data " + nama + " (" + umur + " bln) tersimpan", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        btnBersih.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                edtNamaHewan.setText("");
+                edtJenisHewan.setText("");
+                edtRas.setText("");
+                edtUmur.setText("");
+                edtCatatan.setText("");
+                rgGender.clearCheck();
+                edtNamaHewan.requestFocus();
+            }
+        });
+    }
+}
