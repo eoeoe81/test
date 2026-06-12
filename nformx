@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/sand">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:src="@drawable/pet_banner"
+            android:layout_marginBottom="16dp" />
+
+        <EditText android:id="@+id/edtNamaHewan" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nama Hewan" />
+        <EditText android:id="@+id/edtJenisHewan" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Jenis Hewan" />
+        <EditText android:id="@+id/edtRas" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Ras" />
+        <EditText android:id="@+id/edtUmur" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Umur" android:inputType="number" />
+        
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Jenis Kelamin:" android:layout_marginTop="10dp"/>
+        <RadioGroup android:id="@+id/rgGender" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <RadioButton android:id="@+id/rbJantan" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Jantan" />
+            <RadioButton android:id="@+id/rbBetina" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Betina" />
+        </RadioGroup>
+
+        <EditText android:id="@+id/edtCatatan" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Catatan Medis" android:layout_marginBottom="20dp" />
+
+        <Button android:id="@+id/btnSimpan" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="SIMPAN" android:backgroundTint="@color/darkteal" />
+        <Button android:id="@+id/btnBersih" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="BERSIHKAN" android:backgroundTint="@color/teal" />
+    </LinearLayout>
+</ScrollView>
